@@ -13,10 +13,6 @@ public class Mantimentos {
         this.nome = nome;
     }
 
-    public String getUnidade() {
-        return unidade;
-    }
-
     public void setUnidade(String unidade) {
         this.unidade = unidade;
     }
