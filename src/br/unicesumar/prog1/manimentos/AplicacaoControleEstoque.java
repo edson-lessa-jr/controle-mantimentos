@@ -91,7 +91,7 @@ public class AplicacaoControleEstoque {
 
             boolean controle = true;
             for (int i = 0; i < posicaoAtual; i++) {
-                if (nomeMantimento.equals(mantimentosList[i].getNome())) {
+                if (nomeMantimento.equalsIgnoreCase(mantimentosList[i].getNome())) {
                     controle=false;
                     Mantimentos mantimentosMovimentacao = mantimentosList[i];
                     System.out.println("QTDE ATUAL : " + mantimentosMovimentacao.getQuantidadeEmEstoque());
@@ -103,7 +103,7 @@ public class AplicacaoControleEstoque {
                         break;
                     }
                     escolha = confirmaOperacao();
-                    if (escolha.equals("S")) {
+                    if (escolha.equalsIgnoreCase("S")) {
                         mantimentosMovimentacao.setDiminuirQuantidade(quantidadeSaida);
                         mantimentosList[i] = mantimentosMovimentacao;
                     }
@@ -113,7 +113,7 @@ public class AplicacaoControleEstoque {
             mensagemConsultaNaoEncontrada(controle);
             escolha = getRepetirOperacao();
 
-        } while (escolha.equals("S"));
+        } while (escolha.equalsIgnoreCase("S"));
     }
 
     private void compraMantimentos() {
@@ -126,7 +126,7 @@ public class AplicacaoControleEstoque {
             Mantimentos mantimentosMovimentacao;
             boolean controle=true;
             for (int i = 0; i < posicaoAtual; i++) {
-                if (nomeMantimento.equals(mantimentosList[i].getNome())) {
+                if (nomeMantimento.equalsIgnoreCase(mantimentosList[i].getNome())) {
                     controle=false;
                     mantimentosMovimentacao = mantimentosList[i];
                     System.out.println("QTDE ATUAL : " + mantimentosMovimentacao.getQuantidadeEmEstoque());
@@ -134,7 +134,7 @@ public class AplicacaoControleEstoque {
                     int quantidadeEntrada = scanner.nextInt();
                     System.out.println("QTDE FINAL : " + (mantimentosMovimentacao.getQuantidadeEmEstoque() + quantidadeEntrada));
                     escolha = confirmaOperacao();
-                    if (escolha.equals("S")) {
+                    if (escolha.equalsIgnoreCase("S")) {
                         mantimentosMovimentacao.setAdicionarQuantidade(quantidadeEntrada);
                         mantimentosList[i] = mantimentosMovimentacao;
                     }
@@ -145,7 +145,7 @@ public class AplicacaoControleEstoque {
 
             escolha = getRepetirOperacao();
 
-        } while (escolha.equals("S"));
+        } while (escolha.equalsIgnoreCase("S"));
     }
 
     private void opcaoInvalida() {
@@ -203,12 +203,12 @@ public class AplicacaoControleEstoque {
             boolean controle = true;
             for (int i = 0; i < posicaoAtual; i++) {
                 scanner = new Scanner(System.in);
-                if (nomeConsulta.equals(mantimentosList[i].getNome())) {
+                if (nomeConsulta.equalsIgnoreCase(mantimentosList[i].getNome())) {
                     controle=false;
                     System.out.println(mantimentosList[i].toString());
                     System.out.println("CONFIRMA EXCLUSÃO ( S/N ) ?");
                     escolha = scanner.next();
-                    if (escolha.equals("S")) {
+                    if (escolha.equalsIgnoreCase("S")) {
                         for (int j = i; j < posicaoAtual - 1; j++) {
                             mantimentosList[j] = mantimentosList[j + 1];
                             posicaoAtual--;
@@ -220,7 +220,7 @@ public class AplicacaoControleEstoque {
             mensagemConsultaNaoEncontrada(controle);
             escolha = getRepetirOperacao();
 
-        } while (escolha.equals("S"));
+        } while (escolha.equalsIgnoreCase("S"));
     }
 
     private void consultarMantimento() {
@@ -234,7 +234,7 @@ public class AplicacaoControleEstoque {
             String nomeConsulta = scanner.nextLine();
             boolean controle=true;
             for (int i = 0; i < posicaoAtual; i++) {
-                if (nomeConsulta.equals(mantimentosList[i].getNome())) {
+                if (nomeConsulta.equalsIgnoreCase(mantimentosList[i].getNome())) {
                     controle=false;
                     System.out.println(mantimentosList[i].toString());
                     break;
@@ -243,7 +243,7 @@ public class AplicacaoControleEstoque {
             mensagemConsultaNaoEncontrada(controle);
             escolha = getRepetirOperacao();
 
-        } while (escolha.equals("S"));
+        } while (escolha.equalsIgnoreCase("S"));
     }
 
     private void alterarMantimento() {
@@ -257,12 +257,12 @@ public class AplicacaoControleEstoque {
             boolean controle=true;
             for (int i = 0; i < posicaoAtual; i++) {
 
-                if (nomeConsulta.equals(mantimentosList[i].getNome())) {
+                if (nomeConsulta.equalsIgnoreCase(mantimentosList[i].getNome())) {
                     controle=false;
                     System.out.println("MANTIMENTO ENCONTRADO\n");
                     Mantimentos mantimentos = setDadosDoMantimento();
                     escolha = confirmaOperacao();
-                    if (escolha.equals("S")) {
+                    if (escolha.equalsIgnoreCase("S")) {
                         mantimentosList[i] = mantimentos;
                     }
                     break;
@@ -271,7 +271,7 @@ public class AplicacaoControleEstoque {
             mensagemConsultaNaoEncontrada(controle);
             escolha = getRepetirOperacao();
 
-        } while (escolha.equals("S"));
+        } while (escolha.equalsIgnoreCase("S"));
     }
 
     private void mensagemConsultaNaoEncontrada(boolean controle) {
@@ -287,13 +287,13 @@ public class AplicacaoControleEstoque {
             System.out.println("CADASTRO DE MANTIMENTOS");
             Mantimentos mantimentos = setDadosDoMantimento();
             escolha = confirmaOperacao();
-            if (escolha.equals("S")) {
+            if (escolha.equalsIgnoreCase("S")) {
                 mantimentosList[posicaoAtual] = mantimentos;
                 posicaoAtual++;
             }
             escolha = getRepetirOperacao();
 
-        } while (escolha.equals("S"));
+        } while (escolha.equalsIgnoreCase("S"));
     }
 
     private Mantimentos setDadosDoMantimento() {
