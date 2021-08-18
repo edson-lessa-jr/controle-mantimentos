@@ -2,16 +2,17 @@ package br.unicesumar.prog1.manimentos;
 
 import br.unicesumar.prog1.manimentos.modelo.Mantimentos;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class AplicacaoControleEstoque {
+public class AplicacaoMantimentos {
 
     private Mantimentos mantimentosList[] = new Mantimentos[5];
     private int posicaoAtual = 0;
 
     public static void main(String[] args) {
 
-        AplicacaoControleEstoque app = new AplicacaoControleEstoque();
+        AplicacaoMantimentos app = new AplicacaoMantimentos();
         app.tituloMenu();
         app.telaPrincipal();
     }
@@ -201,8 +202,11 @@ public class AplicacaoControleEstoque {
             System.out.println("Informe o nome do mantimento para pesquisa");
             String nomeConsulta = scanner.nextLine();
             boolean controle = true;
+            ArrayList<Mantimentos> arrayList = new ArrayList();
+            arrayList.add(new Mantimentos());
             for (int i = 0; i < posicaoAtual; i++) {
                 scanner = new Scanner(System.in);
+                Mantimentos mantimentos = arrayList.get(i);
                 if (nomeConsulta.equalsIgnoreCase(mantimentosList[i].getNome())) {
                     controle=false;
                     System.out.println(mantimentosList[i].toString());
@@ -212,7 +216,10 @@ public class AplicacaoControleEstoque {
                         for (int j = i; j < posicaoAtual - 1; j++) {
                             mantimentosList[j] = mantimentosList[j + 1];
                             posicaoAtual--;
+
                         }
+
+
                     }
                     break;
                 }
